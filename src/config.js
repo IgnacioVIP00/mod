@@ -1,7 +1,7 @@
 const settings = {};
 
-settings.token = "MTE4MDIyNzM2MzQwNjA5MDMzMQ.GZX3c5.n6a31MX_9wO_4IbdSp1iAjMC_UR7Q-ooQNTeDI"
-settings.botID = "1180227363406090331"
+settings.token = process.env.token
+settings.botID = process.env.botID
 settings.serverID = ""
 
 settings.bot = {
