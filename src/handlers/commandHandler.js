@@ -1,5 +1,7 @@
+import fs from "node:fs"
 /*const fs = require('node:fs');
-const path = require('node:path');
+const path = require('node:path');*/
+import path from "node:path"
 const { Collection, REST, Routes } = require("discord.js");
 const { token, botID, serverID } = require("../config.js");
 
@@ -49,4 +51,4 @@ module.exports = {
           }
         })();
     }
-}*/
+}
