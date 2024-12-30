@@ -22,5 +22,9 @@
     "fs": false,
     "path": false
   },
+  "node": {
+    "fs": "empty",
+    "path": "empty"
+  },
   "description": ""
 }
