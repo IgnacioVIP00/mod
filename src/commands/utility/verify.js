@@ -58,9 +58,9 @@ module.exports = {
             .setTimestamp()
 
             const fetch = (...args) => import("node-fetch").then(({ default: fetch}) => fetch(...args));
-            let response = await fetch(`https://verify.eryn.io/api/user/${interaction.user.id}`, {
+            let response = await fetch(`https://registry.rover.link/api/guilds/707117657538953336/discord-to-roblox/${interaction.user.id}`, {
                 headers: new Headers({
-                    'Authorization': process.env.ROVERAPIKEY
+                    "Authorization": "Bearer rvr2b08yszolqshjdnzzukc0agjpd02hpvx6z3afclq8j0owkwq5kkq1ybfe365bfla"
                 }),
             });
             let data = await response.json();
