@@ -1,7 +1,7 @@
 const settings = {};
 
-settings.token = process.env.token
-settings.botID = process.env.botID
+settings.token = process.env.TOKEN
+settings.botID = process.env.BOTID
 settings.serverID = ""
 
 settings.bot = {
