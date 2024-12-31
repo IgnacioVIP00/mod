@@ -39,7 +39,7 @@ module.exports = {
                 console.log(ban)
                 if (getDate(ban.time) > new Date()) {
                     if (ban.mod === "SYSTEM") return `${ban.reason} (${ban.date} by SYSTEM)`
-                    return `${ban.reason} (${ban.date} by <@${db.get(`vid_${ban.mod}`)}>)`
+                    return `${ban.reason} (${ban.date} by <@${await db.get(`vid_${ban.mod}`)}>)`
                 } else {
                     await db.delete(`ban_${id}`);
                     return "-"

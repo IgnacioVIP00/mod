@@ -74,10 +74,10 @@ app.get('/status', async (req, res) => {
     mod: req.query.mod,
     status: req.query.status
   }
-  db.set(`status_${req.query.id}`, statusInfo)
+  db.set(`status_${req.query.id}`, statusInfo);
   
-  let jaj = await noblox.getUsernameFromId(req.query.id)
-  res.send(`Successfully made ${jaj} ${req.query.status} for "${req.query.reason}" until ${req.query.date}`)
+  let jaj = await noblox.getUsernameFromId(req.query.id);
+  res.send(`Successfully made ${jaj} ${req.query.status} for "${req.query.reason}" until ${req.query.date}`);
 });
 
 app.get('/groups', async (req, res) => {
@@ -85,8 +85,8 @@ app.get('/groups', async (req, res) => {
 });
 
 app.get('/a', async (req, res) => {
-  db.delete(`ban_${req.query.id}`)
-  res.send(`Successfully unbanned ${await noblox.getUsernameFromId(req.query.id)}`)
+  db.delete(`ban_${req.query.id}`);
+  res.send(`Successfully unbanned ${await noblox.getUsernameFromId(req.query.id)}`);
 });
 
 app.get('/b', async (req, res) => {
@@ -96,9 +96,10 @@ app.get('/b', async (req, res) => {
     reason: req.query.reason,
     mod: req.query.mod
   }
-  db.set(`ban_${req.query.id}`, banInfo)
-  let jaj = await noblox.getUsernameFromId(req.query.id)
-  res.send(`Successfully banned ${jaj} for "${req.query.reason}" until ${req.query.date}`)
+  db.set(`ban_${req.query.id}`, banInfo);
+
+  let jaj = await noblox.getUsernameFromId(req.query.id);
+  res.send(`Successfully banned ${jaj} for "${req.query.reason}" until ${req.query.date}`);
 });
 
 app.get('/leaderboard', (req, res) => {
