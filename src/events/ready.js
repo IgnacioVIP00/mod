@@ -7,7 +7,7 @@ module.exports = {
     once: true,
     async execute(client) {
         client.user.setStatus("dnd");
-        client.user.setActivity("Bomboclaat!", { type: ActivityType.Playing });
+        client.user.setActivity("hey!", { type: ActivityType.Playing });
 
         await db.set("robloxToken", "");
 
