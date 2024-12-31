@@ -3,6 +3,7 @@ const noblox = require("noblox.js");
 const { QuickDB } = require("quick.db");
 const db = new QuickDB();
 const { bot } = require("../../config");
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -85,7 +86,7 @@ module.exports = {
         };
 
         function getThumbnail(id) {
-            fetch("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=957413104&size=420x420&format=Png&isCircular=false").then(r => r.json()).then(d => {
+            fetch(`https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${id}&size=420x420&format=Png&isCircular=false`).then(r => r.json()).then(d => {
                 const imageLink = d.data[0].imageUrl;
                 return imageLink;
             }).catch(e => console.error(e));
