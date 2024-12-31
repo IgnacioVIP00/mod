@@ -60,7 +60,7 @@ module.exports = {
             const fetch = (...args) => import("node-fetch").then(({ default: fetch}) => fetch(...args));
             let response = await fetch(`https://registry.rover.link/api/guilds/707117657538953336/discord-to-roblox/${interaction.user.id}`, {
                 headers: new Headers({
-                    "Authorization": "Bearer rvr2b08yszolqshjdnzzukc0agjpd02hpvx6z3afclq8j0owkwq5kkq1ybfe365bfla"
+                    "Authorization": `Bearer ${process.env.ROVERAPIKEY}`
                 }),
             });
             let data = await response.json();
@@ -69,9 +69,11 @@ module.exports = {
                 db.set(`vid_${id}`, interaction.user.id);
                 db.set(`vdiscord_${interaction.user.id}`, id);
 
-                let mem = await interaction.client.guilds.cache.find(g => g.id === "947889565232934924").members.fetch(message.author.id);
-                mem.roles.add("948004623678062622");
-                mem.setNickname(await noblox.getUsernameFromId(id));
+                let mem = await interaction.client.guilds.cache.find(g => g.id === "707117657538953336").members.fetch(interaction.user.id);
+                if (mem.manageable) {
+                    mem.roles.add("846810305924694078");
+                    mem.setNickname(await noblox.getUsernameFromId(id));
+                };
 
                 return interaction.channel.send({ embeds: [successEmbed] });
             } else return interaction.channel.send({ embeds: [nVerifyEmbed] });
