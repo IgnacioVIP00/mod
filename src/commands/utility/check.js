@@ -98,7 +98,7 @@ module.exports = {
         .setColor(bot.mainColor)
         .setFooter({ text: `Success | ${bot.fullName}`, iconURL: bot.successImage })
         .setTimestamp()
-        .setThumbnail(`https://www.roblox.com/headshot-thumbnail/image?userId=${id}&width=420&height=420&format=png`)
+        .setThumbnail(`https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${id}&size=420x420&format=Png&isCircular=false`)
 
         let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         for (numK in nums) {
