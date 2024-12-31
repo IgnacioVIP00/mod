@@ -58,7 +58,11 @@ module.exports = {
             .setTimestamp()
 
             const fetch = (...args) => import("node-fetch").then(({ default: fetch}) => fetch(...args));
-            let response = await fetch(`https://verify.eryn.io/api/user/${interaction.user.id}`);
+            let response = await fetch(`https://verify.eryn.io/api/user/${interaction.user.id}`, {
+                headers: new Headers({
+                    'Authorization': process.env.ROVERAPIKEY
+                }),
+            });
             let data = await response.json();
 
             if (data.robloxId === id) {
