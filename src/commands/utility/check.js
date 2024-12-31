@@ -36,7 +36,6 @@ module.exports = {
         async function getBan(id) {
             let ban = await db.get(`ban_${id}`);
             if (ban) {
-                console.log(ban)
                 if (getDate(ban.time) > new Date()) {
                     if (ban.mod === "SYSTEM") return `${ban.reason} (${ban.date} by SYSTEM)`
                     return `${ban.reason} (${ban.date} by <@${await db.get(`vid_${ban.mod}`)}>)`
