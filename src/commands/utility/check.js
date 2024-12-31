@@ -1,8 +1,8 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const noblox = require("noblox.js");
 const { QuickDB } = require("quick.db");
-const { bot } = require("../../config");
 const db = new QuickDB();
+const { bot } = require("../../config");
 
 module.exports = {
     data: new SlashCommandBuilder()
