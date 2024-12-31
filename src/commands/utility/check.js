@@ -84,6 +84,13 @@ module.exports = {
             } else return "-"
         };
 
+        function getThumbnail(id) {
+            fetch("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=957413104&size=420x420&format=Png&isCircular=false").then(r => r.json()).then(d => {
+                const imageLink = d.data[0].imageUrl;
+                return imageLink;
+            }).catch(e => console.error(e));
+        };
+
         let checkEmbed = new EmbedBuilder()
         .setAuthor({ name: `${bot.name} | Check`, iconURL: bot.picture })
         .setTitle(`Showing user's information.`)
@@ -98,7 +105,7 @@ module.exports = {
         .setColor(bot.mainColor)
         .setFooter({ text: `Success | ${bot.fullName}`, iconURL: bot.successImage })
         .setTimestamp()
-        .setThumbnail(`https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${id}&size=420x420&format=Png&isCircular=false`)
+        .setThumbnail(getThumbnail(id))
 
         let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         for (numK in nums) {
