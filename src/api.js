@@ -1,4 +1,5 @@
-const db = require("quick.db");
+const { QuickDB } = require("quick.db");
+const db = new QuickDB();
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const express = require('express');
 const app = express();  
@@ -6,18 +7,18 @@ const noblox = require("noblox.js");
 
 app.get('/', (req, res) => {
   res.json("hi")
-})
+});
 
 app.get('/jjj', async (req, res) => {
   db.delete(`status_${req.query.id}`)
   res.send(`Successfully removed ${await noblox.getUsernameFromId(req.query.id)}'s status`)
-})
+});
 
 async function getStatus(id) {
   function getDate(seconds) {
     let t = new Date(1970, 0, 1);
     return t.setSeconds(seconds);
-  }
+  };
   
   let abcd;
 
@@ -32,7 +33,7 @@ async function getStatus(id) {
     if (rank > 0) {
       abcd = { status: "KOS", reason:  `Group membership - ${group.name} (${group.id})`}
     }
-  }
+  };
 
   for (groupK in aosGroups) {
     let group = aosGroups[groupK];
@@ -41,12 +42,12 @@ async function getStatus(id) {
     if (rank > 0) {
     abcd = { status: "AOS", reason:  `Group membership - ${group.name} (${group.id})`}
     }
-  }
+  };
 
   async function getStatuss(id) {
-    if (await db.get(`status_${id}`) || abcd) {
-      let status = await db.get(`status_${id}`);
-        
+    let status = await db.get(`status_${id}`);
+    
+    if (status || abcd) {        
       if (status) {
         if (getDate(status.time) > new Date()) {
         return { status: `${status.status}`, reason:  `${status.reason}`}
@@ -56,15 +57,14 @@ async function getStatus(id) {
         }
       } else return abcd
     } else return { status: `none` };
-  }
+  };
   return await getStatuss(id)
-}
-
+};
 
 
 app.get('/s', async (req, res) => {
   res.json(await getStatus(req.query.id))
-})
+});
 
 app.get('/status', async (req, res) => {
   let statusInfo = {
@@ -78,16 +78,16 @@ app.get('/status', async (req, res) => {
   
   let jaj = await noblox.getUsernameFromId(req.query.id)
   res.send(`Successfully made ${jaj} ${req.query.status} for "${req.query.reason}" until ${req.query.date}`)
-})
+});
 
 app.get('/groups', async (req, res) => {
   res.json(require("./groups"))
-})
+});
 
 app.get('/a', async (req, res) => {
   db.delete(`ban_${req.query.id}`)
   res.send(`Successfully unbanned ${await noblox.getUsernameFromId(req.query.id)}`)
-})
+});
 
 app.get('/b', async (req, res) => {
   let banInfo = {
@@ -99,7 +99,7 @@ app.get('/b', async (req, res) => {
   db.set(`ban_${req.query.id}`, banInfo)
   let jaj = await noblox.getUsernameFromId(req.query.id)
   res.send(`Successfully banned ${jaj} for "${req.query.reason}" until ${req.query.date}`)
-})
+});
 
 app.get('/leaderboard', (req, res) => {
   let token = req.query.token;
@@ -117,27 +117,6 @@ app.get('/leaderboard', (req, res) => {
   };
 
   db.set(`${rank}`, q);
-  res.json("ok");
-});
-
-app.get('/user', (req, res) => {
-  let token = req.query.token;
-  let userId = req.query.userid;
-  let donated = req.query.donated;
-
-  if (token !== process.env.tokenn) return res.json("unauthorized");
-
-  db.set(`${userId}`, donated);
-  res.json("ok");
-});
-
-app.get('/raised', (req, res) => {
-  let token = req.query.token;
-  let amount = req.query.amount;
-
-  if (token !== process.env.tokenn) return res.json("unauthorized");
-
-  db.set(`raised`, amount);
   res.json("ok");
 });
 
