@@ -76,14 +76,14 @@ module.exports = {
             if (status || abcd) {
                 if (status) {
                     if (getDate(status.time) > new Date()) {
-                        return `**${status.status}** - ${status.reason} (${status.date} by <@${db.get(`vid_${status.mod}`)}>)`
+                        return `**${status.status}** - ${status.reason} (${status.date} by <@${await db.get(`vid_${status.mod}`)}>)`
                     } else {
                         await db.delete(`status_${id}`)
                         return "-"
                     }
                 } else return abcd
             } else return "-"
-        }
+        };
 
         let checkEmbed = new EmbedBuilder()
         .setAuthor({ name: `${bot.name} | Check`, iconURL: bot.picture })
