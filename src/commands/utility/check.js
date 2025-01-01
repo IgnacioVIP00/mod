@@ -110,8 +110,8 @@ module.exports = {
           { name: '\u200B', value: `**Moderation**` },
           { name: 'Ban', value: `${await getBan(id)}` },
           { name: 'Status', value: `${await getStatus(id)}` },
-          { name: '\u200B', value: `**Contribution**` },
-          { name: 'Donated', value: `${await uData}`, inline: true },
+          //{ name: '\u200B', value: `**Contribution**` },
+          //{ name: 'Donated', value: `${await uData}`, inline: true },
         )
         .setColor(bot.mainColor)
         .setFooter({ text: `Success | ${bot.fullName}`, iconURL: bot.successImage })
