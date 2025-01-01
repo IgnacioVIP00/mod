@@ -85,11 +85,21 @@ module.exports = {
             } else return "-"
         };
 
-        function getThumbnail(id) {
-            fetch(`https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${id}&size=420x420&format=Png&isCircular=false`).then(r => r.json()).then(d => {
-                const imageLink = d.data[0].imageUrl;
+        async function getThumbnail(id) {
+            const url = `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${id}&size=420x420&format=Png&isCircular=false`;
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`Response status: ${response.status}`);
+                }
+
+                const json = await response.json();
+
+                const imageLink = json.data[0].imageUrl;
                 return imageLink;
-            }).catch(e => console.error(e));
+            } catch (error) {
+                console.error(error.message);
+            }
         };
 
         let checkEmbed = new EmbedBuilder()
@@ -106,7 +116,7 @@ module.exports = {
         .setColor(bot.mainColor)
         .setFooter({ text: `Success | ${bot.fullName}`, iconURL: bot.successImage })
         .setTimestamp()
-        .setThumbnail(getThumbnail(id))
+        .setThumbnail(await getThumbnail(id))
 
         let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         for (numK in nums) {
@@ -114,7 +124,7 @@ module.exports = {
 
             if (db.get(`${num}`).username === await noblox.getUsernameFromId(id)) {
                 checkEmbed.addField(`Top`, `${num}`, true)
-            }
+            };
         };
 
         checkEmbed.addFields({ name: '\u200B', value: `**Groups**` })
