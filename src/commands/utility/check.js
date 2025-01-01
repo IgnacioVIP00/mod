@@ -143,6 +143,7 @@ module.exports = {
           }
         };
 
-        interaction.reply({ embeds: [checkEmbed ]});
+        await interaction.deferReply({ ephemeral: true });
+        await interaction.editReply({ embeds: [checkEmbed ]});
     }
 }
