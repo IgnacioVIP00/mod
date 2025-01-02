@@ -12,11 +12,11 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + "/public/" + "index.html");
 });
 
-app.get('/2302973465358966144578872', function(req, res) {
+app.get('/styles.css', function(req, res) {
   res.sendFile(__dirname + "/public/" + "styles.css");
 });
 
-app.get('/6804387279837321293430224', function(req, res) {
+app.get('/script.js', function(req, res) {
   res.sendFile(__dirname + "/public/" + "script.js");
 });
 
