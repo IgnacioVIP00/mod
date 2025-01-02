@@ -76,7 +76,7 @@ module.exports = {
                 };
 
                 return interaction.channel.send({ embeds: [successEmbed] });
-            } else return interaction.channel.send({ embeds: [nVerifyEmbed] });
+            } else return await interaction.channel.send({ embeds: [nVerifyEmbed] });
         });
 
         collector.on("end", async c => {
@@ -88,7 +88,7 @@ module.exports = {
                 .setFooter({ text: `Error | ${bot.fullName}`, iconURL: bot.failImage })
                 .setTimestamp()
 
-                return interaction.channel.send({ embeds: [noEmbed] });
+                return await interaction.channel.send({ embeds: [noEmbed] });
             }
         });
     }

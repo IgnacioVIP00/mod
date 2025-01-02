@@ -14,7 +14,7 @@ module.exports = {
         });
 
         let helpEmbed = new EmbedBuilder()
-        .setAuthor({ name: `${bot.name} | Check`, iconURL: bot.picture })
+        .setAuthor({ name: `${bot.name} | Help`, iconURL: bot.picture })
         .setTitle(`Showing commands:`)
         .setColor(bot.mainColor)
         .setFooter({ text: `Success | ${bot.fullName}`, iconURL: bot.successImage })
@@ -24,6 +24,6 @@ module.exports = {
             helpEmbed.addFields({ name: `;${c.data.name.toUpperCase()}`, value: `${c.data.description}` })
         });
 
-        interaction.reply({ embeds: [helpEmbed ]});
+        await interaction.reply({ embeds: [helpEmbed ]});
     }
 }

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Welcome to My Portfolio</h1>
+</header>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section class="hero">
+    <h1>Hi, I'm [Your Name]</h1>
+    <p>Passionate Developer | Creative Thinker | Problem Solver</p>
+</section>
+
+<section id="about" class="container">
+    <h2 class="section-title">About Me</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae erat vel justo luctus tincidunt non a magna. Sed vehicula, mauris quis facilisis consectetur, turpis sapien pretium sapien, eget accumsan metus lectus eget quam.</p>
+</section>
+
+<section id="projects" class="container">
+    <h2 class="section-title">My Projects</h2>
+    <div class="projects">
+        <div class="project">
+            <img src="https://via.placeholder.com/300" alt="Project 1">
+            <h3>Project Title 1</h3>
+            <p>Brief description of the project. Technologies used: HTML, CSS, JavaScript.</p>
+        </div>
+        <div class="project">
+            <img src="https://via.placeholder.com/300" alt="Project 2">
+            <h3>Project Title 2</h3>
+            <p>Brief description of the project. Technologies used: React, Node.js.</p>
+        </div>
+        <div class="project">
+            <img src="https://via.placeholder.com/300" alt="Project 3">
+            <h3>Project Title 3</h3>
+            <p>Brief description of the project. Technologies used: Python, Django.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="container">
+    <h2 class="section-title">Contact Me</h2>
+    <form>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" required></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

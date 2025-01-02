@@ -4,9 +4,20 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 const express = require('express');
 const app = express();  
 const noblox = require("noblox.js");
+const path = require('path');
+
+app.use(express.static(__dirname));
 
 app.get('/', (req, res) => {
-  res.json("hi")
+  res.sendFile(__dirname + "/public/" + "index.html");
+});
+
+app.get('/2302973465358966144578872', function(req, res) {
+  res.sendFile(__dirname + "/public/" + "styles.css");
+});
+
+app.get('/6804387279837321293430224', function(req, res) {
+  res.sendFile(__dirname + "/public/" + "script.js");
 });
 
 app.get('/jjj', async (req, res) => {
@@ -22,9 +33,9 @@ async function getStatus(id) {
   
   let abcd;
 
-  let jjjjj = require("./groups")
-  let aosGroups = jjjjj.AoS
-  let kosGroups = jjjjj.KoS
+  let groupFile = require("./groups")
+  let aosGroups = groupFile.AoS
+  let kosGroups = groupFile.KoS
 
   for (groupK in kosGroups) {
     let group = kosGroups[groupK];
