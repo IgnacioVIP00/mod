@@ -19,15 +19,20 @@ module.exports = {
         let user = interaction.options.getString("user");
         let id;
 
+        let errorEmbed = new EmbedBuilder()
+        .setAuthor({ name: `${bot.name} | Check`, iconURL: bot.picture })
+        .addFields({ name: `Error!`, value: `You must specify a username or verify!` })
+        .setColor("#ff0033")
+        .setFooter({ text: `Error | ${bot.fullName}`, iconURL: bot.failImage })
+        .setTimestamp()
+
         if (!user) {
             let disc = await db.get(`vdiscord_${interaction.user.id}`);
             if (disc) {
                 id = disc
-                console.log("YES")
             } else {
-                console.log("NO")
                 await interaction.deferReply({ ephemeral: false });
-                return await interaction.editReply({ content: "NO" });
+                return await interaction.editReply({ embeds: [errorEmbed] });
             }
         } else
             id = await noblox.getIdFromUsername(user);
