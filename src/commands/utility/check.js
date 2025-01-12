@@ -20,7 +20,8 @@ module.exports = {
         let id;
 
         if (!user) {
-            id = await db.get(`vdiscord_${interaction.user.id}`)
+            let disc = await db.get(`vdiscord_${interaction.user.id}`);
+            if (disc) id = await db.get(`vdiscord_${interaction.user.id}`)
         } else
             id = await noblox.getIdFromUsername(user);
 
