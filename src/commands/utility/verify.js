@@ -45,7 +45,7 @@ module.exports = {
 
             let nVerifyEmbed = new EmbedBuilder()
             .setAuthor({ name: `${bot.name} | Verify`, iconURL: bot.picture })
-            .addFields({ name: `Error!`, value: `Looks like you aren't verified with RoVer! Verify [**here**](https://verify.eryn.io/)!` })
+            .addFields({ name: `Error!`, value: `Looks like you aren't verified with RoVer or provided a wrong username! Verify [**here**](https://verify.eryn.io/)!` })
             .setColor("#ff0033")
             .setFooter({ text: `Error | ${bot.fullName}`, iconURL: bot.failImage })
             .setTimestamp()
