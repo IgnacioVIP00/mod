@@ -21,7 +21,11 @@ module.exports = {
 
         if (!user) {
             let disc = await db.get(`vdiscord_${interaction.user.id}`);
-            if (disc) id = await db.get(`vdiscord_${interaction.user.id}`)
+            if (disc) {
+                id = await db.get(`vdiscord_${interaction.user.id}`)
+            } else {
+                return interaction.reply({ content: "NO!" })
+            }
         } else
             id = await noblox.getIdFromUsername(user);
 
