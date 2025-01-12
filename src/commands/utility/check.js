@@ -19,6 +19,8 @@ module.exports = {
         let user = interaction.options.getString("user");
         let id;
 
+        await interaction.deferReply({ ephemeral: false });
+
         let errorEmbed = new EmbedBuilder()
         .setAuthor({ name: `${bot.name} | Check`, iconURL: bot.picture })
         .addFields({ name: `Error!`, value: `You must specify a username or verify!` })
@@ -31,7 +33,6 @@ module.exports = {
             if (disc) {
                 id = disc
             } else {
-                await interaction.deferReply({ ephemeral: false });
                 return await interaction.editReply({ embeds: [errorEmbed] });
             }
         } else
@@ -156,7 +157,6 @@ module.exports = {
           }
         };
 
-        await interaction.deferReply({ ephemeral: false });
         await interaction.editReply({ embeds: [checkEmbed ]});
     }
 }
