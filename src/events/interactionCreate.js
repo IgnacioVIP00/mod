@@ -12,7 +12,7 @@ module.exports = {
         try {
             await command.execute(interaction);
         } catch(error) {
-            if (interaction.replied || interaction.deffered) {
+            if (interaction.replied || interaction.defered) {
                 await interaction.followUp({ content: "error execute", ephemeral: true });
             } else {
                 console.error(error)
