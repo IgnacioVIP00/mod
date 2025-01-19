@@ -157,6 +157,6 @@ module.exports = {
           }
         };
 
-        await interaction.editReply({ embeds: [checkEmbed ]});
+        return interaction.editReply({ embeds: [checkEmbed ]});
     }
 }
